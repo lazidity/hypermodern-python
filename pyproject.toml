@@ -21,6 +21,7 @@ hypermodern-python = "hypermodern_python.console:main"
 pytest = "^8.3.1"
 coverage = {extras = ["toml"], version = "^7.6.0"}
 pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
 
 [tool.coverage.paths]
 source = [ "src", "*/site-packages" ]
