@@ -17,6 +17,9 @@ requests = "^2.32.3"
 hypermodern-python = "hypermodern_python.console:main"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
