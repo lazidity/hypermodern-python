@@ -425,6 +425,26 @@ test = ["certifi", "cryptography-vectors (==43.0.0)", "pretend", "pytest (>=6.2.
 test-randomorder = ["pytest-randomly"]
 
 [[package]]
+name = "desert"
+version = "2022.9.22"
+description = "Deserialize to objects while staying DRY"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "desert-2022.9.22-py3-none-any.whl", hash = "sha256:cad7b6f1936448d26bde403882ec6855786b4d24d38d0ed4400e505ac8c5591f"},
+    {file = "desert-2022.9.22.tar.gz", hash = "sha256:0f45e098915e16452a269a1da0bcbbf31df0af2173899f1c097fb2e3b0265d89"},
+]
+
+[package.dependencies]
+attrs = "*"
+marshmallow = ">=3.0"
+typing-inspect = "*"
+
+[package.extras]
+dev = ["black", "build", "bump2version", "check-manifest", "coverage", "cuvner", "docutils", "importlib-metadata", "isort", "marshmallow-enum", "marshmallow-union", "mypy", "pex", "pygments", "pylint", "pytest", "pytest-cov", "pytest-sphinx", "pytest-travis-fold", "readme-renderer", "towncrier", "tox", "twine", "versioneer", "wheel"]
+test = ["coverage", "cuvner", "importlib-metadata", "marshmallow-enum", "marshmallow-union", "pytest", "pytest-cov", "pytest-sphinx", "pytest-travis-fold", "tox"]
+
+[[package]]
 name = "dparse"
 version = "0.6.4b0"
 description = "A parser for Python dependency files"
@@ -1359,6 +1379,21 @@ files = [
 ]
 
 [[package]]
+name = "typing-inspect"
+version = "0.9.0"
+description = "Runtime inspection utilities for typing module."
+optional = false
+python-versions = "*"
+files = [
+    {file = "typing_inspect-0.9.0-py3-none-any.whl", hash = "sha256:9ee6fc59062311ef8547596ab6b955e1b8aa46242d854bfc78f4f6b0eff35f9f"},
+    {file = "typing_inspect-0.9.0.tar.gz", hash = "sha256:b23fc42ff6f6ef6954e4852c1fb512cdd18dbea03134f91f856a95ccc9461f78"},
+]
+
+[package.dependencies]
+mypy-extensions = ">=0.3.0"
+typing-extensions = ">=3.7.4"
+
+[[package]]
 name = "urllib3"
 version = "2.2.2"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -1378,4 +1413,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "dfd1d55ad6513c077815fc1f814023b2675491347e62c76e4cbd8f5c075147ba"
+content-hash = "81de7affbf7242bc8745bdc09e7290c467911e5180278f8e822ea680ab667973"

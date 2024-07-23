@@ -14,6 +14,8 @@ python = "^3.12"
 click = "^8.1.7"
 requests = "^2.32.3"
 safety = "^3.2.4"
+desert = "^2022.9.22"
+marshmallow = "^3.21.3"
 
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"

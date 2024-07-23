@@ -58,6 +58,7 @@ def install_with_constraints(session, *args, **kwargs):
             "export",
             "--with=dev",
             "--format=requirements.txt",
+            "--without-hashes",
             f"--output={requirements.name}",
             external=True,
         )
@@ -68,4 +69,5 @@ def install_with_constraints(session, *args, **kwargs):
 def mypy(session):
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
+    session.run("mypy", "--install-types", "--non-interactive")
     session.run("mypy", *args)
