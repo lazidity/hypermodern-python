@@ -1,8 +1,9 @@
 # .flake8
 
 [flake8]
-select = BLK,C,E,F,I,W
+select = B,B9,BLK,C,E,F,I,W
+ignore = E203,E501,W503
 max-complexity = 10
-max-line-length = 88
+max-line-length = 80
 application-import-names = hypermodern_python,tests
 import-order-style = google
