@@ -23,7 +23,7 @@ def random_page(language: str = "vi") -> Page:
     url = API_URL.format(language=language)
 
     try:
-        with requests.get(url) as response:
+        with requests.get(url, timeout=10) as response:
             response.raise_for_status()
             data = response.json()
             return schema.load(data)
