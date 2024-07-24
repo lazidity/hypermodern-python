@@ -1,7 +1,9 @@
 # noxfile.py
 import tempfile
+from typing import Any
 
 import nox
+from nox.sessions import Session
 
 nox.options.sessions = "lint", "mypy", "safety", "tests"
 
@@ -9,14 +11,14 @@ locations = "src", "tests", "noxfile.py"
 
 
 @nox.session(python=["3.12"])
-def tests(session):
+def tests(session: Session) -> None:
     args = session.posargs or ["--cov", "-m", "not e2e"]
     session.run("poetry", "install", external=True)
     session.run("pytest", *args)
 
 
 @nox.session(python=["3.12"])
-def lint(session):
+def lint(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(
         session,
@@ -31,14 +33,14 @@ def lint(session):
 
 
 @nox.session(python=["3.12"])
-def black(session):
+def black(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "black")
     session.run("black", *args)
 
 
 @nox.session(python=["3.12"])
-def safety(session):
+def safety(session: Session) -> None:
     with tempfile.NamedTemporaryFile() as requirements:
         session.run(
             "poetry",
@@ -53,7 +55,7 @@ def safety(session):
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
-def install_with_constraints(session, *args, **kwargs):
+def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
     with tempfile.NamedTemporaryFile() as requirements:
         session.run(
             "poetry",
@@ -68,7 +70,7 @@ def install_with_constraints(session, *args, **kwargs):
 
 
 @nox.session(python=["3.12"])
-def mypy(session):
+def mypy(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
     session.run("mypy", "--install-types", "--non-interactive")
@@ -79,7 +81,7 @@ package = "hypermodern_python"
 
 
 @nox.session(python=["3.12"])
-def typeguard(session):
+def typeguard(session: Session) -> None:
     args = session.posargs or ["-m", "not e2e"]
     session.run("poetry", "install", "--only=main", external=True)
     install_with_constraints(session, "pytest", "pytest-mock", "typeguard")
