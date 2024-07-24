@@ -71,3 +71,14 @@ def mypy(session):
     install_with_constraints(session, "mypy")
     session.run("mypy", "--install-types", "--non-interactive")
     session.run("mypy", *args)
+
+
+package = "hypermodern_python"
+
+
+@nox.session(python=["3.12"])
+def typeguard(session):
+    args = session.posargs or ["-m", "not e2e"]
+    session.run("poetry", "install", "--only=main", external=True)
+    install_with_constraints(session, "pytest", "pytest-mock", "typeguard")
+    session.run("pytest", f"--typeguard-packages={package}", *args)
